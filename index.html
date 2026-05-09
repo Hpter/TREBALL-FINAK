@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Repaso — Guía de Estudio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap"
+        rel="stylesheet" />
+    <link rel="shortcut icon" href="img/JS.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <nav id="sidebar">
+        <div class="sidebar-logo">
+            <span>&lt;JS/&gt;</span>
+            <small>// guía de estudio</small>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#variables" class="icon">📦</a><a href="#variables">Variables y tipos</a></li>
+            <li><a href="#operadores"> <span class="icon">➕</span>Operadores</a></li>
+            <li><a href="#condicionales"><span class="icon">🔀</span>Condicionales</a></li>
+            <li><a href="#bucles"> <span class="icon">🔁</span>Bucles</a></li>
+            <li><a href="#arrays"> <span class="icon">📋</span>Arrays</a></li>
+            <li><a href="#funciones"> <span class="icon">⚙️</span>Funciones</a></li>
+            <li><a href="#dom"> <span class="icon">🌐</span>DOM</a></li>
+            <li><a href="#eventos"> <span class="icon">🖱️</span>Eventos</a></li>
+            <li><a href="#math"> <span class="icon">🔢</span>Math</a></li>
+            <li><a href="#strings"> <span class="icon">🔤</span>Strings</a></li>
+            <li><a href="#fechas"> <span class="icon">📅</span>Fechas</a></li>
+            <li><a href="#formularios"> <span class="icon">📝</span>Formularios</a></li>
+            <li><a href="#errores"> <span class="icon">⚠️</span>Errores típicos</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN  -->
+    <main id="main">
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1>Repaso de <em>JavaScript</em></h1>
+            <p>Todos los conceptos básicos organizados por secciones. Léelos, prueba los ejemplos interactivos y llega
+                al examen preparado.</p>
+            <span class="badge">// 13 secciones · ejemplos funcionales · interactivo</span>
+        </div>
+
+    <!-- 1. VARIABLES Y TIPOS -->
+        <section class="section" id="variables">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2>Variables y tipos</h2>
+            </div>
+
+            <div class="explain-box">
+                Las variables son <strong>cajitas con nombre</strong> donde guardamos información. En JS moderno usamos
+                <strong>let</strong> (puede cambiar) y <strong>const</strong> (no puede cambiar). <code>var</code>
+                existe pero es antiguo y tiene comportamientos raros, así que lo evitamos. Los tipos de datos
+                principales son: número, texto (string), booleano, null, undefined, objeto y array.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">variables_tipos.js</div>
+                <pre><span class="kw">let</span>   nombre   = <span class="str">"Ada"</span>          <span class="cm">// string: texto entre comillas</span>
+<span class="kw">const</span> edad     = <span class="num">25</span>             <span class="cm">// number: número entero</span>
+<span class="kw">let</span>   activo   = <span class="kw">true</span>           <span class="cm">// boolean: verdadero o falso</span>
+<span class="kw">let</span>   vacio    = <span class="kw">null</span>           <span class="cm">// null: vacío intencionado</span>
+<span class="kw">let</span>   sinDef   <span class="cm">// undefined: no se ha asignado nada</span>
+
+console.<span class="fn">log</span>(<span class="kw">typeof</span> nombre)      <span class="cm">// "string"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> edad)        <span class="cm">// "number"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> activo)      <span class="cm">// "boolean"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> sinDef)      <span class="cm">// "undefined"</span></pre>
+            </div>
+            <div class="code-desc">
+                <strong>typeof</strong> nos dice el tipo de cualquier valor. Útil para depurar. Fíjate que
+                <code>typeof null</code> devuelve <code>"object"</code> — es un bug histórico de JS que no se ha podido
+                corregir sin romper la web.
+            </div>
+        </section>
+
+    <!--2. OPERADORES -->
+        <section class="section" id="operadores">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2>Operadores</h2>
+            </div>
+
+            <div class="explain-box">
+                Los operadores nos permiten hacer cálculos y comparaciones. Los <strong>aritméticos</strong> (+, -, *,
+                /, %) operan con números. Los <strong>de comparación</strong> (===, !==, &gt;, &lt;, &gt;=, &lt;=)
+                devuelven true/false. El <strong>===</strong> compara valor Y tipo (usa siempre este, no ==). Los
+                <strong>lógicos</strong> (&amp;&amp;, ||, !) combinan condiciones.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">operadores.js</div>
+                <pre><span class="cm">// Aritméticos</span>
+<span class="num">10</span> <span class="op">+</span> <span class="num">3</span>   <span class="cm">// 13</span>
+<span class="num">10</span> <span class="op">%</span> <span class="num">3</span>   <span class="cm">// 1  (resto de la división)</span>
+<span class="num">2</span> <span class="op">**</span> <span class="num">8</span>   <span class="cm">// 256 (potencia)</span>
+
+<span class="cm">// Comparación (siempre ===)</span>
+<span class="str">"5"</span> <span class="op">==</span>  <span class="num">5</span>   <span class="cm">// true  ← peligroso, convierte tipos</span>
+<span class="str">"5"</span> <span class="op">===</span> <span class="num">5</span>   <span class="cm">// false ← correcto, compara tipo también</span>
+
+<span class="cm">// Lógicos</span>
+<span class="kw">true</span> <span class="op">&&</span> <span class="kw">false</span>   <span class="cm">// false (ambos deben ser true)</span>
+<span class="kw">true</span> <span class="op">||</span> <span class="kw">false</span>   <span class="cm">// true  (basta uno)</span>
+<span class="op">!</span><span class="kw">true</span>           <span class="cm">// false (negación)</span>
+
+<span class="cm">// Ternario: condición ? siTrue : siFalse</span>
+<span class="kw">const</span> msg = edad >= <span class="num">18</span> ? <span class="str">"mayor"</span> : <span class="str">"menor"</span></pre>
+            </div>
+            <div class="code-desc">
+                El <strong>operador ternario</strong> es un if/else en una sola línea: muy útil para asignar valores
+                según una condición. El <strong>%</strong> (módulo) te da el resto de dividir, perfecto para saber si un
+                número es par (<code>n % 2 === 0</code>).
+            </div>
+
+            <!-- INTERACTIVO -->
+            <div class="interactive-box">
+                <h4>▶ Prueba la calculadora</h4>
+                <div class="form-inline">
+                    <div><label>Número A</label><input type="number" id="opA" value="10" /></div>
+                    <div><label>Operador</label>
+                        <select id="opOp">
+                            <option>+</option>
+                            <option>-</option>
+                            <option>*</option>
+                            <option>/</option>
+                            <option>%</option>
+                        </select>
+                    </div>
+                    <div><label>Número B</label><input type="number" id="opB" value="3" /></div>
+                    <div><label>&nbsp;</label><button onclick="calcular()">Calcular</button></div>
+                </div>
+                <div class="output-box" id="opResult">// resultado aquí</div>
+            </div>
+        </section>
+
+    <!--3. CONDICIONALES -->
+        <section class="section" id="condicionales">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2>Condicionales</h2>
+            </div>
+
+            <div class="explain-box">
+                Los condicionales permiten <strong>tomar decisiones</strong>: si pasa esto, haz aquello; si no, haz lo
+                otro. La estructura básica es <strong>if / else if / else</strong>. Para comparar un valor contra muchas
+                opciones, <strong>switch</strong> es más limpio que encadenar muchos if.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">condicionales.js</div>
+                <pre><span class="kw">const</span> nota = <span class="num">7.5</span>
+
+<span class="kw">if</span> (nota >= <span class="num">9</span>) {
+    console.<span class="fn">log</span>(<span class="str">"Sobresaliente"</span>)
+} <span class="kw">else if</span> (nota >= <span class="num">7</span>) {
+    console.<span class="fn">log</span>(<span class="str">"Notable"</span>)       <span class="cm">// ← se ejecuta este</span>
+} <span class="kw">else if</span> (nota >= <span class="num">5</span>) {
+    console.<span class="fn">log</span>(<span class="str">"Aprobado"</span>)
+} <span class="kw">else</span> {
+    console.<span class="fn">log</span>(<span class="str">"Suspenso"</span>)
+}
+
+<span class="cm">// Switch: ideal para valores exactos</span>
+<span class="kw">const</span> dia = <span class="str">"lunes"</span>
+<span class="kw">switch</span> (dia) {
+  <span class="kw">case</span> <span class="str">"lunes"</span>:
+    console.<span class="fn">log</span>(<span class="str">"Inicio de semana"</span>)
+    <span class="kw">break</span>
+  <span class="kw">case</span> <span class="str">"viernes"</span>:
+    console.<span class="fn">log</span>(<span class="str">"¡Por fin viernes!"</span>)
+    <span class="kw">break</span>
+  <span class="kw">default</span>:
+    console.<span class="fn">log</span>(<span class="str">"Un día normal"</span>)
+}</pre>
+            </div>
+            <div class="code-desc">
+                JS evalúa los <strong>if</strong> de arriba a abajo y ejecuta el primero que se cumpla. En el
+                <strong>switch</strong>, el <code>break</code> es imprescindible para que no caiga al siguiente case. El
+                <code>default</code> equivale al <code>else</code>.
+            </div>
+
+            <div class="interactive-box">
+                <h4>▶ Comprueba tu nota</h4>
+                <div class="form-row">
+                    <label>Introduce una nota (0-10)</label>
+                    <input type="number" id="notaInput" min="0" max="10" step="0.5" value="6" />
+                </div>
+                <button onclick="verNota()">Ver calificación</button>
+                <div class="output-box" id="notaResult">// calificación aquí</div>
+            </div>
+        </section>
+
+    <!--4. BUCLES -->
+        <section class="section" id="bucles">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2>Bucles</h2>
+            </div>
+
+            <div class="explain-box">
+                Los bucles repiten código mientras se cumpla una condición. <strong>for</strong> es ideal cuando sabes
+                cuántas veces repetir. <strong>while</strong> repite mientras algo sea verdad. <strong>for...of</strong>
+                recorre arrays elemento a elemento. <strong>for...in</strong> recorre las propiedades de un objeto.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">bucles.js</div>
+                <pre><span class="cm">// for clásico</span>
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < <span class="num">5</span>; i++) {
+    console.<span class="fn">log</span>(i)  <span class="cm">// 0, 1, 2, 3, 4</span>
+}
+
+<span class="cm">// while</span>
+<span class="kw">let</span> contador = <span class="num">10</span>
+<span class="kw">while</span> (contador > <span class="num">0</span>) {
+    console.<span class="fn">log</span>(contador)
+    contador -= <span class="num">2</span>   <span class="cm">// 10, 8, 6, 4, 2</span>
+}
+
+<span class="cm">// for...of (para arrays)</span>
+<span class="kw">const</span> frutas = [<span class="str">"🍎"</span>, <span class="str">"🍌"</span>, <span class="str">"🍊"</span>]
+<span class="kw">for</span> (<span class="kw">const</span> fruta <span class="kw">of</span> frutas) {
+    console.<span class="fn">log</span>(fruta)
+}
+
+<span class="cm">// break y continue</span>
+<span class="kw">for</span> (<span class="kw">let</span> n = <span class="num">0</span>; n < <span class="num">10</span>; n++) {
+    <span class="kw">if</span> (n === <span class="num">3</span>) <span class="kw">continue</span>  <span class="cm">// salta el 3</span>
+    <span class="kw">if</span> (n === <span class="num">7</span>) <span class="kw">break</span>     <span class="cm">// para en el 7</span>
+    console.<span class="fn">log</span>(n)
+}</pre>
+            </div>
+            <div class="code-desc">
+                El <strong>for clásico</strong> tiene tres partes: inicio (<code>let i=0</code>), condición
+                (<code>i&lt;5</code>) e incremento (<code>i++</code>). <strong>break</strong> sale del bucle y
+                <strong>continue</strong> salta a la siguiente iteración sin ejecutar el resto del bloque.
+            </div>
+
+            <div class="interactive-box">
+                <h4>▶ Genera la tabla de multiplicar</h4>
+                <div class="form-inline">
+                    <div><label>Número</label><input type="number" id="tablaNum" value="7" min="1" max="20" /></div>
+                    <div><label>&nbsp;</label><button onclick="generarTabla()">Generar</button></div>
+                </div>
+                <div class="output-box" id="tablaResult">// tabla aquí</div>
+            </div>
+        </section>
+
+    <!--5. ARRAYS -->
+        <section class="section" id="arrays">
+            <div class="section-header">
+                <span class="section-num">05</span>
+                <h2>Arrays</h2>
+            </div>
+
+            <div class="explain-box">
+                Un array es una <strong>lista ordenada de elementos</strong>. Se declara con corchetes <code>[]</code> y
+                cada elemento tiene un índice que empieza en 0. Tienen métodos muy potentes: <strong>push</strong> añade
+                al final, <strong>pop</strong> elimina el último, <strong>splice</strong> borra por índice,
+                <strong>filter</strong> filtra, <strong>map</strong> transforma, <strong>find</strong> busca el primero
+                que cumpla la condición.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">arrays.js</div>
+                <pre><span class="kw">const</span> nums = [<span class="num">3</span>, <span class="num">1</span>, <span class="num">4</span>, <span class="num">1</span>, <span class="num">5</span>, <span class="num">9</span>, <span class="num">2</span>]
+
+nums.<span class="fn">push</span>(<span class="num">6</span>)              <span class="cm">// añade 6 al final</span>
+nums.<span class="fn">pop</span>()               <span class="cm">// elimina el último (6)</span>
+nums.<span class="fn">splice</span>(<span class="num">2</span>, <span class="num">1</span>)        <span class="cm">// elimina 1 elemento desde índice 2</span>
+
+<span class="cm">// map: transforma cada elemento</span>
+<span class="kw">const</span> dobles = nums.<span class="fn">map</span>(n => n * <span class="num">2</span>)
+
+<span class="cm">// filter: devuelve los que cumplan la condición</span>
+<span class="kw">const</span> mayores = nums.<span class="fn">filter</span>(n => n > <span class="num">3</span>)
+
+<span class="cm">// find: el primero que cumple</span>
+<span class="kw">const</span> primero = nums.<span class="fn">find</span>(n => n > <span class="num">5</span>)
+
+<span class="cm">// forEach: recorrer sin devolver nada</span>
+nums.<span class="fn">forEach</span>((n, i) => console.<span class="fn">log</span>(`[${i}] = ${n}`))
+
+<span class="cm">// includes / indexOf</span>
+nums.<span class="fn">includes</span>(<span class="num">9</span>)         <span class="cm">// true</span>
+nums.<span class="fn">indexOf</span>(<span class="num">9</span>)          <span class="cm">// posición</span>
+
+<span class="cm">// sort y reverse</span>
+[...<span class="fn">nums</span>].<span class="fn">sort</span>((a,b) => a - b)    <span class="cm">// orden ascendente</span></pre>
+            </div>
+            <div class="code-desc">
+                <strong>map</strong> y <strong>filter</strong> devuelven <em>nuevos</em> arrays sin modificar el
+                original. <strong>forEach</strong> recorre pero no devuelve nada. Al hacer <code>sort</code> numérico,
+                debes pasar una función comparadora <code>(a,b) =&gt; a-b</code>, de lo contrario ordena como texto.
+            </div>
+        </section>
+
+    <!--6. FUNCIONES -->
+        <section class="section" id="funciones">
+            <div class="section-header">
+                <span class="section-num">06</span>
+                <h2>Funciones</h2>
+            </div>
+
+            <div class="explain-box">
+                Una función es un <strong>bloque de código reutilizable</strong> al que le pones nombre. Le puedes pasar
+                <strong>parámetros</strong> (datos de entrada) y puede <strong>retornar</strong> un resultado. Hay
+                varias formas de escribirlas: declaración clásica, expresión de función y arrow function (la más moderna
+                y compacta).
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">funciones.js</div>
+                <pre><span class="cm">// Declaración clásica (se puede usar antes de definirla)</span>
+<span class="kw">function</span> <span class="fn">saludar</span>(nombre) {
+    <span class="kw">return</span> <span class="str">`Hola, ${nombre}!`</span>
+}
+
+<span class="cm">// Expresión de función</span>
+<span class="kw">const</span> <span class="fn">despedir</span> = <span class="kw">function</span>(nombre) {
+    <span class="kw">return</span> <span class="str">`Adiós, ${nombre}!`</span>
+}
+
+<span class="cm">// Arrow function</span>
+<span class="kw">const</span> <span class="fn">doble</span> = (n) => n * <span class="num">2</span>            <span class="cm">// una línea, return implícito</span>
+<span class="kw">const</span> <span class="fn">sumar</span> = (a, b) => {             <span class="cm">// varias líneas, return explícito</span>
+    <span class="kw">const</span> resultado = a + b
+    <span class="kw">return</span> resultado
+}
+
+<span class="cm">// Parámetros por defecto</span>
+<span class="kw">const</span> <span class="fn">presentar</span> = (nombre, rol = <span class="str">"alumno"</span>) => {
+    <span class="kw">return</span> <span class="str">`${nombre} es ${rol}`</span>
+}
+
+<span class="fn">presentar</span>(<span class="str">"Ada"</span>)              <span class="cm">// "Ada es alumno"</span>
+<span class="fn">presentar</span>(<span class="str">"Tim"</span>, <span class="str">"profesor"</span>) <span class="cm">// "Tim es profesor"</span></pre>
+            </div>
+            <div class="code-desc">
+                Las <strong>arrow functions</strong> son la forma preferida hoy. Si solo hay un <strong>return</strong>
+                de una expresión, puedes omitir las llaves y el <code>return</code>. Los <strong>parámetros por
+                    defecto</strong> (con <code>=</code>) evitan tener que comprobar si el argumento llegó o no.
+            </div>
+        </section>
+
+    <!--7. DOM -->
+        <section class="section" id="dom">
+            <div class="section-header">
+                <span class="section-num">07</span>
+                <h2>DOM</h2>
+            </div>
+
+            <div class="explain-box">
+                El DOM (Document Object Model) es la <strong>representación del HTML como un árbol de objetos</strong>
+                que JS puede leer y modificar. Con él podemos seleccionar elementos, cambiar su contenido, su estilo,
+                añadir o borrar nodos y mucho más.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">dom.js</div>
+                <pre><span class="cm">// Seleccionar elementos</span>
+<span class="kw">const</span> caja  = document.<span class="fn">getElementById</span>(<span class="str">'miCaja'</span>)
+<span class="kw">const</span> items = document.<span class="fn">querySelectorAll</span>(<span class="str">'.item'</span>)
+<span class="kw">const</span> btn   = document.<span class="fn">querySelector</span>(<span class="str">'button'</span>)
+
+<span class="cm">// Leer y cambiar contenido</span>
+caja.textContent = <span class="str">"Hola mundo"</span>
+caja.innerHTML   = <span class="str">"&lt;strong&gt;Negrita&lt;/strong&gt;"</span>
+
+<span class="cm">// Cambiar estilos</span>
+caja.style.color      = <span class="str">"red"</span>
+caja.style.fontSize   = <span class="str">"20px"</span>
+caja.classList.<span class="fn">add</span>(<span class="str">'activo'</span>)
+caja.classList.<span class="fn">remove</span>(<span class="str">'activo'</span>)
+caja.classList.<span class="fn">toggle</span>(<span class="str">'activo'</span>)   <span class="cm">// añade o quita</span>
+
+<span class="cm">// Leer valores de inputs</span>
+<span class="kw">const</span> valor = document.<span class="fn">getElementById</span>(<span class="str">'miInput'</span>).value
+
+<span class="cm">// Crear y añadir elementos</span>
+<span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">'p'</span>)
+p.textContent = <span class="str">"Nuevo párrafo"</span>
+document.body.<span class="fn">appendChild</span>(p)
+
+<span class="cm">// Eliminar elemento</span>
+p.<span class="fn">remove</span>()</pre>
+            </div>
+            <div class="code-desc">
+                <strong>querySelector</strong> y <strong>querySelectorAll</strong> aceptan cualquier selector CSS.
+                <strong>textContent</strong> es más seguro que <strong>innerHTML</strong> porque no interpreta HTML
+                (evita ataques XSS). <strong>classList.toggle</strong> es muy cómodo para activar/desactivar clases CSS.
+            </div>
+
+            <div class="interactive-box">
+                <h4>▶ Manipula el DOM en tiempo real</h4>
+                <div class="form-row">
+                    <label>Escribe algo</label>
+                    <input type="text" id="domInput" placeholder="Escribe aquí..." />
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                    <button onclick="domCambiarTexto()">Cambiar texto</button>
+                    <button onclick="domToggleColor()">Toggle color</button>
+                    <button onclick="domAnadir()">Añadir elemento</button>
+                    <button class="btn-danger" onclick="domBorrarUltimo()">Borrar último</button>
+                </div>
+                <div id="domDemo"
+                    style="margin-top:14px;padding:16px;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius);min-height:60px;font-family:var(--mono);font-size:13px;">
+                    <span id="domTexto" style="color:var(--accent2)">Este texto cambiará...</span>
+                </div>
+            </div>
+        </section>
+
+    <!--8. EVENTOS -->
+        <section class="section" id="eventos">
+            <div class="section-header">
+                <span class="section-num">08</span>
+                <h2>Eventos</h2>
+            </div>
+
+            <div class="explain-box">
+                Los eventos son <strong>acciones del usuario</strong> (clic, tecla pulsada, ratón encima, scroll…) a las
+                que podemos reaccionar con JavaScript. La forma recomendada es <strong>addEventListener</strong>, que
+                añade una función (listener) que se ejecuta cuando ocurre el evento.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">eventos.js</div>
+                <pre><span class="kw">const</span> btn = document.<span class="fn">getElementById</span>(<span class="str">'miBoton'</span>)
+
+<span class="cm">// addEventListener(tipo, función)</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {
+    console.<span class="fn">log</span>(<span class="str">'¡Hiciste clic!'</span>)
+})
+
+<span class="cm">// El objeto 'event' tiene info del evento</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, (event) => {
+    console.<span class="fn">log</span>(event.target)    <span class="cm">// el elemento clicado</span>
+    console.<span class="fn">log</span>(event.type)      <span class="cm">// "click"</span>
+})
+
+<span class="cm">// Eventos de teclado</span>
+document.<span class="fn">addEventListener</span>(<span class="str">'keydown'</span>, (e) => {
+    console.<span class="fn">log</span>(e.key)           <span class="cm">// "Enter", "a", "Escape"...</span>
+})
+
+<span class="cm">// Eventos de formulario</span>
+<span class="kw">const</span> input = document.<span class="fn">getElementById</span>(<span class="str">'miInput'</span>)
+input.<span class="fn">addEventListener</span>(<span class="str">'input'</span>, (e) => {
+    console.<span class="fn">log</span>(e.target.value)  <span class="cm">// valor en tiempo real</span>
+})
+
+<span class="cm">// Prevenir comportamiento por defecto</span>
+form.<span class="fn">addEventListener</span>(<span class="str">'submit'</span>, (e) => {
+    e.<span class="fn">preventDefault</span>()          <span class="cm">// evita que recargue la página</span>
+})</pre>
+            </div>
+            <div class="code-desc">
+                <strong>e.preventDefault()</strong> es esencial en formularios para evitar que la página se recargue.
+                <strong>event.target</strong> apunta al elemento exacto que disparó el evento. Puedes añadir varios
+                listeners al mismo elemento.
+            </div>
+
+            <div class="interactive-box">
+                <h4>▶ Detector de eventos</h4>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+                    <input type="text" id="eventoInput" placeholder="Escribe o haz clic..." style="max-width:260px" />
+                    <button id="eventoBtn" onmouseover="logEvento('mouseover')" onmouseout="logEvento('mouseout')"
+                        onclick="logEvento('click')">Interactúa conmigo</button>
+                </div>
+                <div class="output-box" id="eventoLog" style="max-height:120px;overflow-y:auto">// eventos aquí</div>
+            </div>
+        </section>
+
+    <!--9. MATH -->
+        <section class="section" id="math">
+            <div class="section-header">
+                <span class="section-num">09</span>
+                <h2>Math</h2>
+            </div>
+
+            <div class="explain-box">
+                El objeto <strong>Math</strong> de JS tiene constantes y métodos matemáticos ya listos para usar. No
+                necesitas hacer <code>new Math()</code>, se usa directamente. Los más útiles:
+                <strong>Math.random()</strong> genera un número entre 0 y 1, <strong>Math.floor/ceil/round</strong>
+                redondean, y <strong>Math.max/min</strong> devuelven el mayor o menor.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">math.js</div>
+                <pre><span class="cm">// Constantes</span>
+Math.PI         <span class="cm">// 3.14159...</span>
+Math.E          <span class="cm">// 2.71828...</span>
+
+<span class="cm">// Redondeo</span>
+Math.<span class="fn">floor</span>(<span class="num">4.9</span>)   <span class="cm">// 4  (hacia abajo)</span>
+Math.<span class="fn">ceil</span>(<span class="num">4.1</span>)    <span class="cm">// 5  (hacia arriba)</span>
+Math.<span class="fn">round</span>(<span class="num">4.5</span>)  <span class="cm">// 5  (el más cercano)</span>
+
+<span class="cm">// Valor absoluto, raíz, potencia</span>
+Math.<span class="fn">abs</span>(<span class="op">-</span><span class="num">7</span>)      <span class="cm">// 7</span>
+Math.<span class="fn">sqrt</span>(<span class="num">25</span>)     <span class="cm">// 5</span>
+Math.<span class="fn">pow</span>(<span class="num">2</span>, <span class="num">10</span>)   <span class="cm">// 1024</span>
+
+<span class="cm">// Max y min</span>
+Math.<span class="fn">max</span>(<span class="num">3</span>, <span class="num">9</span>, <span class="num">1</span>)  <span class="cm">// 9</span>
+Math.<span class="fn">min</span>(<span class="num">3</span>, <span class="num">9</span>, <span class="num">1</span>)  <span class="cm">// 1</span>
+
+<span class="cm">// Número aleatorio entre min y max (entero)</span>
+<span class="kw">function</span> <span class="fn">aleatorio</span>(min, max) {
+    <span class="kw">return</span> Math.<span class="fn">floor</span>(Math.<span class="fn">random</span>() * (max - min + <span class="num">1</span>)) + min
+}
+<span class="fn">aleatorio</span>(<span class="num">1</span>, <span class="num">6</span>)   <span class="cm">// simula un dado</span></pre>
+            </div>
+            <div class="code-desc">
+                <strong>Math.random()</strong> devuelve un decimal entre 0 (incluido) y 1 (excluido). La fórmula
+                <code>Math.floor(Math.random() * (max - min + 1)) + min</code> es el patrón estándar para enteros
+                aleatorios en un rango.
+            </div>
+
+            <div class="interactive-box">
+                <h4>▶ Lanza el dado</h4>
+                <div style="display:flex;gap:10px;align-items:center;">
+                    <button onclick="lanzarDado()">🎲 Lanzar dado</button>
+                    <div class="output-box" id="dadoResult" style="flex:1;font-size:28px;text-align:center">—</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+       10. STRINGS
+  ══════════════════════════════ -->
+        <section class="section" id="strings">
+            <div class="section-header">
+                <span class="section-num">10</span>
+                <h2>Strings</h2>
+            </div>
+
+            <div class="explain-box">
+                Los strings (cadenas de texto) tienen métodos para <strong>buscar, cortar, transformar y
+                    combinar</strong> texto. Los <strong>template literals</strong> (comillas invertidas `` ` ``)
+                permiten insertar variables directamente con <code>${variable}</code>.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">strings.js</div>
+                <pre><span class="kw">const</span> texto = <span class="str">"  Hola Mundo  "</span>
+
+texto.<span class="fn">length</span>              <span class="cm">// 14 (longitud)</span>
+texto.<span class="fn">trim</span>()              <span class="cm">// "Hola Mundo" (quita espacios)</span>
+texto.<span class="fn">toUpperCase</span>()      <span class="cm">// "  HOLA MUNDO  "</span>
+texto.<span class="fn">toLowerCase</span>()      <span class="cm">// "  hola mundo  "</span>
+texto.<span class="fn">includes</span>(<span class="str">"Mundo"</span>)  <span class="cm">// true</span>
+texto.<span class="fn">startsWith</span>(<span class="str">"Ho"</span>)  <span class="cm">// false (tiene espacios)</span>
+texto.<span class="fn">trim</span>().<span class="fn">startsWith</span>(<span class="str">"Ho"</span>)  <span class="cm">// true</span>
+
+<span class="cm">// Extraer</span>
+texto.<span class="fn">slice</span>(<span class="num">2</span>, <span class="num">6</span>)         <span class="cm">// "Hola"</span>
+texto.<span class="fn">split</span>(<span class="str">" "</span>)          <span class="cm">// array de palabras</span>
+
+<span class="cm">// Reemplazar</span>
+texto.<span class="fn">replace</span>(<span class="str">"Mundo"</span>, <span class="str">"JS"</span>)   <span class="cm">// "  Hola JS  "</span>
+texto.<span class="fn">replaceAll</span>(<span class="str">"o"</span>, <span class="str">"0"</span>)    <span class="cm">// reemplaza todas</span>
+
+<span class="cm">// Template literal</span>
+<span class="kw">const</span> nombre = <span class="str">"Ana"</span>
+<span class="kw">const</span> saludo = <span class="str">`Hola, ${nombre}! Tienes ${<span class="num">2024</span> - <span class="num">2000</span>} años`</span>
+
+<span class="cm">// Rellenar con ceros</span>
+String(<span class="num">5</span>).<span class="fn">padStart</span>(<span class="num">2</span>, <span class="str">"0"</span>)   <span class="cm">// "05"</span></pre>
+            </div>
+            <div class="code-desc">
+                Los métodos de string <strong>no modifican el original</strong>, devuelven uno nuevo. Es muy común
+                encadenarlos: <code>texto.trim().toLowerCase()</code>. <strong>split</strong> convierte un string en
+                array y <strong>join</strong> hace lo contrario.
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+       11. FECHAS
+  ══════════════════════════════ -->
+        <section class="section" id="fechas">
+            <div class="section-header">
+                <span class="section-num">11</span>
+                <h2>Fechas</h2>
+            </div>
+
+            <div class="explain-box">
+                El objeto <strong>Date</strong> de JS maneja fechas y horas. <code>new Date()</code> crea la fecha y
+                hora actual. Puedes extraer partes como el día, mes o año con métodos <code>get...</code>. Ojo: los
+                meses van de <strong>0 (enero) a 11 (diciembre)</strong>.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">fechas.js</div>
+                <pre><span class="kw">const</span> ahora = <span class="kw">new</span> <span class="fn">Date</span>()
+
+ahora.<span class="fn">getFullYear</span>()   <span class="cm">// 2025</span>
+ahora.<span class="fn">getMonth</span>()      <span class="cm">// 0-11  ← ojo, enero=0</span>
+ahora.<span class="fn">getDate</span>()       <span class="cm">// día del mes (1-31)</span>
+ahora.<span class="fn">getDay</span>()        <span class="cm">// día semana (0=domingo)</span>
+ahora.<span class="fn">getHours</span>()      <span class="cm">// hora (0-23)</span>
+ahora.<span class="fn">getMinutes</span>()    <span class="cm">// minutos</span>
+ahora.<span class="fn">getTime</span>()       <span class="cm">// milisegundos desde 1 ene 1970</span>
+
+<span class="cm">// Crear una fecha concreta</span>
+<span class="kw">const</span> navidad = <span class="kw">new</span> <span class="fn">Date</span>(<span class="num">2025</span>, <span class="num">11</span>, <span class="num">25</span>)  <span class="cm">// mes 11 = diciembre</span>
+
+<span class="cm">// Calcular diferencia en días</span>
+<span class="kw">const</span> hoy  = <span class="kw">new</span> <span class="fn">Date</span>()
+<span class="kw">const</span> fin  = <span class="kw">new</span> <span class="fn">Date</span>(<span class="num">2025</span>, <span class="num">5</span>, <span class="num">20</span>)  <span class="cm">// 20 junio</span>
+<span class="kw">const</span> diff = fin - hoy               <span class="cm">// diferencia en ms</span>
+<span class="kw">const</span> dias = Math.<span class="fn">ceil</span>(diff / (<span class="num">1000</span> * <span class="num">60</span> * <span class="num">60</span> * <span class="num">24</span>))
+
+<span class="cm">// Formatear con toLocaleDateString</span>
+ahora.<span class="fn">toLocaleDateString</span>(<span class="str">'es-ES'</span>)  <span class="cm">// "12/05/2025"</span></pre>
+            </div>
+            <div class="code-desc">
+                Para calcular diferencias de fechas, JS trabaja en <strong>milisegundos</strong>. La fórmula
+                <code>diff / (1000 * 60 * 60 * 24)</code> convierte milisegundos a días.
+                <strong>toLocaleDateString</strong> formatea la fecha según el idioma/región.
+            </div>
+
+            <div class="interactive-box">
+                <h4>▶ Calculadora de días</h4>
+                <div class="form-row">
+                    <label>¿Cuántos días faltan para...?</label>
+                    <input type="date" id="fechaTarget" />
+                </div>
+                <button onclick="calcularDias()">Calcular</button>
+                <div class="output-box" id="fechaResult">// días aquí</div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+       12. FORMULARIOS (con tu código base)
+  ══════════════════════════════ -->
+        <section class="section" id="formularios">
+            <div class="section-header">
+                <span class="section-num">12</span>
+                <h2>Formularios</h2>
+            </div>
+
+            <div class="explain-box">
+                Los formularios HTML permiten <strong>recoger datos del usuario</strong>. Con JS los hacemos dinámicos:
+                leemos los valores con <code>.value</code>, validamos que no estén vacíos con <code>.trim()</code> y los
+                procesamos sin recargar la página. A continuación hay un <strong>gestor de préstamos CRUD
+                    completo</strong> (Crear, Leer, Actualizar, Borrar).
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">formularios.js — lectura de campos</div>
+                <pre><span class="cm">// Leer diferentes tipos de input</span>
+<span class="kw">const</span> nombre  = document.<span class="fn">getElementById</span>(<span class="str">'nombre'</span>).value.<span class="fn">trim</span>()
+<span class="kw">const</span> opcion  = document.<span class="fn">getElementById</span>(<span class="str">'select'</span>).value
+<span class="kw">const</span> marcado = document.<span class="fn">getElementById</span>(<span class="str">'check'</span>).checked
+<span class="kw">const</span> radio   = document.<span class="fn">querySelector</span>(<span class="str">'input[name="turno"]:checked'</span>)
+
+<span class="cm">// Validación básica</span>
+<span class="kw">if</span> (nombre === <span class="str">""</span>) {
+    <span class="fn">alert</span>(<span class="str">"El nombre es obligatorio"</span>)
+    <span class="kw">return</span>
+}
+<span class="kw">if</span> (!radio) {
+    <span class="fn">alert</span>(<span class="str">"Selecciona un turno"</span>)
+    <span class="kw">return</span>
+}</pre>
+            </div>
+            <div class="code-desc">
+                <strong>.trim()</strong> elimina los espacios al inicio y final — así evitas que alguien envíe solo
+                espacios. <strong>.checked</strong> devuelve true/false para checkboxes y radios. El selector
+                <code>input[name="turno"]:checked</code> busca el radio seleccionado de ese grupo.
+            </div>
+
+            <!-- DEMO PRÉSTAMOS -->
+            <div class="interactive-box" style="border-top-color:var(--accent);">
+                <h4>▶ Gestor de préstamos (CRUD completo)</h4>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+                    <div class="form-row">
+                        <label>Nombre del alumno</label>
+                        <input type="text" id="nombreAlumno" placeholder="Ada Lovelace" />
+                    </div>
+                    <div class="form-row">
+                        <label>Material</label>
+                        <select id="material">
+                            <option value="">— selecciona —</option>
+                            <option>Portátil</option>
+                            <option>Tablet</option>
+                            <option>Cable HDMI</option>
+                            <option>Ratón</option>
+                            <option>Cargador</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:flex;gap:24px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+                    <div>
+                        <label style="margin-bottom:6px">Turno</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="turno" value="Mañana" /> Mañana</label>
+                            <label><input type="radio" name="turno" value="Tarde" /> Tarde</label>
+                            <label><input type="radio" name="turno" value="Noche" /> Noche</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="margin-bottom:6px">Devuelto</label>
+                        <div class="radio-group">
+                            <label><input type="checkbox" id="devuelto" /> Sí, devuelto</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="alertFormulario" class="alert alert-warn"></div>
+
+                <button id="botonGuardar" onclick="guardarPrestamo()">＋ Añadir préstamo</button>
+
+                <table style="margin-top:18px">
+                    <thead>
+                        <tr>
+                            <th>Alumno</th>
+                            <th>Material</th>
+                            <th>Turno</th>
+                            <th>Devuelto</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTabla">
+                        <tr>
+                            <td colspan="5" style="text-align:center;color:var(--muted)">No hay préstamos registrados
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+       13. ERRORES TÍPICOS
+  ══════════════════════════════ -->
+        <section class="section" id="errores">
+            <div class="section-header">
+                <span class="section-num">13</span>
+                <h2>Errores típicos</h2>
+            </div>
+
+            <div class="explain-box">
+                En JS hay errores que todo el mundo comete al empezar. Conocerlos de antemano te ahorra mucho tiempo.
+                Aquí están los más frecuentes con su solución. También existe <strong>try/catch</strong> para capturar
+                errores en tiempo de ejecución sin que el programa explote.
+            </div>
+
+            <div class="code-wrap">
+                <div class="code-label">errores_tipicos.js</div>
+                <pre><span class="cm">// ❌ ERROR 1: = en vez de === en if</span>
+<span class="kw">if</span> (x = <span class="num">5</span>) { }    <span class="cm">// asigna, no compara</span>
+<span class="kw">if</span> (x === <span class="num">5</span>) { }  <span class="cm">// ✅ correcto</span>
+
+<span class="cm">// ❌ ERROR 2: var en vez de let/const</span>
+<span class="cm">// var tiene scope de función, no de bloque → comportamientos raros</span>
+
+<span class="cm">// ❌ ERROR 3: olvidar break en switch</span>
+<span class="kw">switch</span>(n) {
+  <span class="kw">case</span> <span class="num">1</span>: console.<span class="fn">log</span>(<span class="str">"uno"</span>)  <span class="cm">// sin break cae al case 2</span>
+  <span class="kw">case</span> <span class="num">2</span>: console.<span class="fn">log</span>(<span class="str">"dos"</span>)
+}
+
+<span class="cm">// ❌ ERROR 4: meses de Date empiezan en 0</span>
+<span class="kw">new</span> <span class="fn">Date</span>(<span class="num">2025</span>, <span class="num">12</span>, <span class="num">25</span>) <span class="cm">// ❌ mes 12 no existe → enero 2026</span>
+<span class="kw">new</span> <span class="fn">Date</span>(<span class="num">2025</span>, <span class="num">11</span>, <span class="num">25</span>) <span class="cm">// ✅ mes 11 = diciembre</span>
+
+<span class="cm">// ❌ ERROR 5: comparar con == en vez de ===</span>
+<span class="str">"0"</span> == <span class="kw">false</span>  <span class="cm">// true  ← trampa</span>
+<span class="str">"0"</span> === <span class="kw">false</span> <span class="cm">// false ← correcto</span>
+
+<span class="cm">// ✅ try/catch para capturar errores</span>
+<span class="kw">try</span> {
+    <span class="kw">const</span> data = JSON.<span class="fn">parse</span>(textoInvalido)  <span class="cm">// puede fallar</span>
+} <span class="kw">catch</span> (error) {
+    console.<span class="fn">log</span>(<span class="str">"Error:"</span>, error.message)     <span class="cm">// lo capturamos</span>
+} <span class="kw">finally</span> {
+    console.<span class="fn">log</span>(<span class="str">"Esto siempre se ejecuta"</span>)
+}
+
+<span class="cm">// ❌ ERROR 6: .innerHTML en bucle (lento)</span>
+lista.<span class="fn">innerHTML</span> += <span class="str">"..."</span>      <span class="cm">// ❌ repinta el DOM cada iteración</span>
+<span class="cm">// ✅ Construye primero, luego asigna una vez</span>
+<span class="kw">let</span> html = <span class="str">""</span>
+items.<span class="fn">forEach</span>(i => html += <span class="str">`&lt;li&gt;${i}&lt;/li&gt;`</span>)
+lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></pre>
+            </div>
+            <div class="code-desc">
+                El <strong>try/catch</strong> envuelve código que podría lanzar un error y lo atrapa sin romper la
+                ejecución. El bloque <strong>finally</strong> se ejecuta siempre, haya error o no (útil para cerrar
+                recursos). El error 6 es muy habitual en la práctica de préstamos.
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // ─── NAVEGACIÓN ACTIVA ───────────────────────────────────────
+        const sections = document.querySelectorAll('.section')
+        const navLinks = document.querySelectorAll('.nav-list li a')
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navLinks.forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)
+                    })
+                }
+            })
+        }, { threshold: 0.3 })
+
+        sections.forEach(s => observer.observe(s))
+
+        // ─── OPERADORES ──────────────────────────────────────────────
+        function calcular() {
+            const a = parseFloat(document.getElementById('opA').value)
+            const b = parseFloat(document.getElementById('opB').value)
+            const op = document.getElementById('opOp').value
+            let res
+            switch (op) {
+                case '+': res = a + b; break
+                case '-': res = a - b; break
+                case '*': res = a * b; break
+                case '/': res = b === 0 ? 'Error: división por cero' : a / b; break
+                case '%': res = a % b; break
+            }
+            document.getElementById('opResult').textContent =
+                `${a} ${op} ${b} = ${res}`
+        }
+
+        // ─── CONDICIONALES ───────────────────────────────────────────
+        function verNota() {
+            const n = parseFloat(document.getElementById('notaInput').value)
+            let cal
+            if (isNaN(n) || n < 0 || n > 10) {
+                cal = '⚠️ Introduce un número entre 0 y 10'
+            } else if (n >= 9) {
+                cal = `🌟 Sobresaliente (${n})`
+            } else if (n >= 7) {
+                cal = `👍 Notable (${n})`
+            } else if (n >= 5) {
+                cal = `✅ Aprobado (${n})`
+            } else {
+                cal = `❌ Suspenso (${n})`
+            }
+            document.getElementById('notaResult').textContent = cal
+        }
+
+        // ─── BUCLES ──────────────────────────────────────────────────
+        function generarTabla() {
+            const n = parseInt(document.getElementById('tablaNum').value) || 1
+            let out = ''
+            for (let i = 1; i <= 10; i++) {
+                out += `${n} × ${String(i).padStart(2, ' ')} = ${String(n * i).padStart(3, ' ')}\n`
+            }
+            document.getElementById('tablaResult').textContent = out
+        }
+
+        // ─── DOM ─────────────────────────────────────────────────────
+        let domColorToggle = false
+        function domCambiarTexto() {
+            const val = document.getElementById('domInput').value.trim()
+            document.getElementById('domTexto').textContent = val || '(vacío)'
+        }
+        function domToggleColor() {
+            domColorToggle = !domColorToggle
+            document.getElementById('domTexto').style.color =
+                domColorToggle ? 'var(--accent3)' : 'var(--accent2)'
+        }
+        function domAnadir() {
+            const val = document.getElementById('domInput').value.trim()
+            if (!val) return
+            const p = document.createElement('p')
+            p.textContent = '→ ' + val
+            p.style.color = 'var(--muted)'
+            p.style.marginTop = '6px'
+            p.style.fontFamily = 'var(--mono)'
+            p.style.fontSize = '13px'
+            document.getElementById('domDemo').appendChild(p)
+        }
+        function domBorrarUltimo() {
+            const demo = document.getElementById('domDemo')
+            const ps = demo.querySelectorAll('p')
+            if (ps.length > 0) ps[ps.length - 1].remove()
+        }
+
+        // ─── EVENTOS ─────────────────────────────────────────────────
+        const log = document.getElementById('eventoLog')
+        function logEvento(tipo) {
+            const hora = new Date().toLocaleTimeString('es-ES')
+            log.textContent = `[${hora}] Evento: ${tipo}\n` + log.textContent
+        }
+        document.getElementById('eventoInput').addEventListener('input', e => {
+            logEvento(`input → "${e.target.value}"`)
+        })
+
+        // ─── MATH ────────────────────────────────────────────────────
+        function lanzarDado() {
+            const n = Math.floor(Math.random() * 6) + 1
+            const emojis = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅']
+            document.getElementById('dadoResult').textContent = emojis[n] + ' ' + n
+        }
+
+        // ─── FECHAS ──────────────────────────────────────────────────
+        function calcularDias() {
+            const val = document.getElementById('fechaTarget').value
+            const box = document.getElementById('fechaResult')
+            if (!val) { box.textContent = '⚠️ Selecciona una fecha'; return }
+            const target = new Date(val)
+            const hoy = new Date()
+            hoy.setHours(0, 0, 0, 0)
+            const diff = Math.ceil((target - hoy) / (1000 * 60 * 60 * 24))
+            if (diff === 0) box.textContent = '🎉 ¡Hoy es ese día!'
+            else if (diff > 0) box.textContent = `📅 Faltan ${diff} día${diff > 1 ? 's' : ''}`
+            else box.textContent = `⏮️ Hace ${Math.abs(diff)} día${Math.abs(diff) > 1 ? 's' : ''}`
+        }
+
+        // ─── FORMULARIOS / CRUD PRÉSTAMOS ────────────────────────────
+        let listaPrestamos = []
+        let indiceEdicion = null
+
+        const campoNombreAlumno = document.getElementById('nombreAlumno')
+        const campoMaterial = document.getElementById('material')
+        const checkboxDevuelto = document.getElementById('devuelto')
+        const botonGuardar = document.getElementById('botonGuardar')
+        const cuerpoTabla = document.getElementById('cuerpoTabla')
+
+        function showAlert(msg, tipo = 'warn') {
+            const a = document.getElementById('alertFormulario')
+            a.textContent = msg
+            a.className = `alert alert-${tipo} show`
+            setTimeout(() => a.classList.remove('show'), 3000)
+        }
+
+        function guardarPrestamo() {
+            const nombre = campoNombreAlumno.value.trim()
+            const material = campoMaterial.value
+            const turnoMarcado = document.querySelector('input[name="turno"]:checked')
+            const devuelto = checkboxDevuelto.checked
+
+            if (nombre === '' || material === '' || !turnoMarcado) {
+                showAlert('⚠️ Debes completar todos los campos', 'warn')
+                return
+            }
+
+            const turno = turnoMarcado.value
+            const nuevoPrestamo = { nombre, material, turno, devuelto }
+
+            if (indiceEdicion === null) {
+                listaPrestamos.push(nuevoPrestamo)
+                showAlert('✅ Préstamo añadido', 'ok')
+            } else {
+                listaPrestamos[indiceEdicion] = nuevoPrestamo
+                indiceEdicion = null
+                botonGuardar.textContent = '＋ Añadir préstamo'
+                botonGuardar.style.borderColor = ''
+                botonGuardar.style.color = ''
+                showAlert('✅ Préstamo actualizado', 'ok')
+            }
+
+            limpiarFormulario()
+            mostrarPrestamos()
+        }
+
+        function mostrarPrestamos() {
+            if (listaPrestamos.length === 0) {
+                cuerpoTabla.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted)">No hay préstamos registrados</td></tr>'
+                return
+            }
+            let html = ''
+            listaPrestamos.forEach((p, i) => {
+                html += `
+        <tr>
+          <td style="color:var(--text)">${p.nombre}</td>
+          <td>${p.material}</td>
+          <td><span class="chip">${p.turno}</span></td>
+          <td><span class="chip ${p.devuelto ? 'blue' : 'red'}">${p.devuelto ? 'Sí' : 'No'}</span></td>
+          <td style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn-warn btn-sm" onclick="editarPrestamo(${i})">✏ Editar</button>
+            <button class="btn-danger btn-sm" onclick="borrarPrestamo(${i})">✕ Borrar</button>
+          </td>
+        </tr>`
+            })
+            cuerpoTabla.innerHTML = html
+        }
+
+        function borrarPrestamo(indice) {
+            listaPrestamos.splice(indice, 1)
+            mostrarPrestamos()
+            showAlert('🗑️ Préstamo eliminado', 'warn')
+        }
+
+        function editarPrestamo(indice) {
+            const p = listaPrestamos[indice]
+            campoNombreAlumno.value = p.nombre
+            campoMaterial.value = p.material
+            checkboxDevuelto.checked = p.devuelto
+
+            const radio = document.querySelector(`input[name="turno"][value="${p.turno}"]`)
+            if (radio) radio.checked = true
+
+            indiceEdicion = indice
+            botonGuardar.textContent = '💾 Guardar cambios'
+            botonGuardar.style.borderColor = '#ffaa44'
+            botonGuardar.style.color = '#ffaa44'
+        }
+
+        function limpiarFormulario() {
+            campoNombreAlumno.value = ''
+            campoMaterial.value = ''
+            checkboxDevuelto.checked = false
+            document.querySelectorAll('input[name="turno"]').forEach(r => r.checked = false)
+        }
+    </script>
+
+</body>
+
+</html>
