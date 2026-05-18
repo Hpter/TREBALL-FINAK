@@ -751,28 +751,28 @@ ahora.<span class="fn">toLocaleDateString</span>(<span class="str">'es-ES'</span
 
             <div class="code-wrap">
                 <div class="code-label">errores_tipicos.js</div>
-                <pre><span class="cm">// ❌ ERROR 1: = en vez de === en if</span>
+                <pre><span class="cm">// ERROR 1: = en vez de === en if</span>
 <span class="kw">if</span> (x = <span class="num">5</span>) { }    <span class="cm">// asigna, no compara</span>
-<span class="kw">if</span> (x === <span class="num">5</span>) { }  <span class="cm">// ✅ correcto</span>
+<span class="kw">if</span> (x === <span class="num">5</span>) { }  <span class="cm">// correcto</span>
 
-<span class="cm">// ❌ ERROR 2: var en vez de let/const</span>
+<span class="cm">// ERROR 2: var en vez de let/const</span>
 <span class="cm">// var tiene scope de función, no de bloque → comportamientos raros</span>
 
-<span class="cm">// ❌ ERROR 3: olvidar break en switch</span>
+<span class="cm">// ERROR 3: olvidar break en switch</span>
 <span class="kw">switch</span>(n) {
   <span class="kw">case</span> <span class="num">1</span>: console.<span class="fn">log</span>(<span class="str">"uno"</span>)  <span class="cm">// sin break cae al case 2</span>
   <span class="kw">case</span> <span class="num">2</span>: console.<span class="fn">log</span>(<span class="str">"dos"</span>)
 }
 
-<span class="cm">// ❌ ERROR 4: meses de Date empiezan en 0</span>
+<span class="cm">// ERROR 4: meses de Date empiezan en 0</span>
 <span class="kw">new</span> <span class="fn">Date</span>(<span class="num">2025</span>, <span class="num">12</span>, <span class="num">25</span>) <span class="cm">// ❌ mes 12 no existe → enero 2026</span>
 <span class="kw">new</span> <span class="fn">Date</span>(<span class="num">2025</span>, <span class="num">11</span>, <span class="num">25</span>) <span class="cm">// ✅ mes 11 = diciembre</span>
 
-<span class="cm">// ❌ ERROR 5: comparar con == en vez de ===</span>
+<span class="cm">// ERROR 5: comparar con == en vez de ===</span>
 <span class="str">"0"</span> == <span class="kw">false</span>  <span class="cm">// true  ← trampa</span>
 <span class="str">"0"</span> === <span class="kw">false</span> <span class="cm">// false ← correcto</span>
 
-<span class="cm">// ✅ try/catch para capturar errores</span>
+<span class="cm">// try/catch para capturar errores</span>
 <span class="kw">try</span> {
     <span class="kw">const</span> data = JSON.<span class="fn">parse</span>(textoInvalido)  <span class="cm">// puede fallar</span>
 } <span class="kw">catch</span> (error) {
@@ -781,12 +781,12 @@ ahora.<span class="fn">toLocaleDateString</span>(<span class="str">'es-ES'</span
     console.<span class="fn">log</span>(<span class="str">"Esto siempre se ejecuta"</span>)
 }
 
-<span class="cm">// ❌ ERROR 6: .innerHTML en bucle (lento)</span>
-lista.<span class="fn">innerHTML</span> += <span class="str">"..."</span>      <span class="cm">// ❌ repinta el DOM cada iteración</span>
-<span class="cm">// ✅ Construye primero, luego asigna una vez</span>
+<span class="cm">// ERROR 6: .innerHTML en bucle (lento)</span>
+lista.<span class="fn">innerHTML</span> += <span class="str">"..."</span>      <span class="cm">// repinta el DOM cada iteración</span>
+<span class="cm">// Construye primero, luego asigna una vez</span>
 <span class="kw">let</span> html = <span class="str">""</span>
 items.<span class="fn">forEach</span>(i => html += <span class="str">`&lt;li&gt;${i}&lt;/li&gt;`</span>)
-lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></pre>
+lista.innerHTML = html            <span class="cm">// una sola vez</span></pre>
             </div>
             <div class="code-desc">
                 El <strong>try/catch</strong> envuelve código que podría lanzar un error y lo atrapa sin romper la
@@ -798,7 +798,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
     </main>
 
     <script>
-        // ─── NAVEGACIÓN ACTIVA ───────────────────────────────────────
+        //  NAVEGACIÓN ACTIVA 
         const sections = document.querySelectorAll('.section')
         const navLinks = document.querySelectorAll('.nav-list li a')
 
@@ -814,7 +814,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
 
         sections.forEach(s => observer.observe(s))
 
-        // ─── OPERADORES ──────────────────────────────────────────────
+        // OPERADORES 
         function calcular() {
             const a = parseFloat(document.getElementById('opA').value)
             const b = parseFloat(document.getElementById('opB').value)
@@ -831,25 +831,25 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
                 `${a} ${op} ${b} = ${res}`
         }
 
-        // ─── CONDICIONALES ───────────────────────────────────────────
+        //  CONDICIONALES 
         function verNota() {
             const n = parseFloat(document.getElementById('notaInput').value)
             let cal
             if (isNaN(n) || n < 0 || n > 10) {
-                cal = '⚠️ Introduce un número entre 0 y 10'
+                cal = 'Introduce un número entre 0 y 10'
             } else if (n >= 9) {
-                cal = `🌟 Sobresaliente (${n})`
+                cal = `Sobresaliente (${n})`
             } else if (n >= 7) {
-                cal = `👍 Notable (${n})`
+                cal = `Notable (${n})`
             } else if (n >= 5) {
-                cal = `✅ Aprobado (${n})`
+                cal = `Aprobado (${n})`
             } else {
-                cal = `❌ Suspenso (${n})`
+                cal = `Suspenso (${n})`
             }
             document.getElementById('notaResult').textContent = cal
         }
 
-        // ─── BUCLES ──────────────────────────────────────────────────
+        // BUCLES 
         function generarTabla() {
             const n = parseInt(document.getElementById('tablaNum').value) || 1
             let out = ''
@@ -859,7 +859,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
             document.getElementById('tablaResult').textContent = out
         }
 
-        // ─── DOM ─────────────────────────────────────────────────────
+        //  DOM 
         let domColorToggle = false
         function domCambiarTexto() {
             const val = document.getElementById('domInput').value.trim()
@@ -897,28 +897,21 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
             logEvento(`input → "${e.target.value}"`)
         })
 
-        // ─── MATH ────────────────────────────────────────────────────
-        function lanzarDado() {
-            const n = Math.floor(Math.random() * 6) + 1
-            const emojis = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅']
-            document.getElementById('dadoResult').textContent = emojis[n] + ' ' + n
-        }
-
-        // ─── FECHAS ──────────────────────────────────────────────────
+        //  FECHAS 
         function calcularDias() {
             const val = document.getElementById('fechaTarget').value
             const box = document.getElementById('fechaResult')
-            if (!val) { box.textContent = '⚠️ Selecciona una fecha'; return }
+            if (!val) { box.textContent = 'Selecciona una fecha'; return }
             const target = new Date(val)
             const hoy = new Date()
             hoy.setHours(0, 0, 0, 0)
             const diff = Math.ceil((target - hoy) / (1000 * 60 * 60 * 24))
-            if (diff === 0) box.textContent = '🎉 ¡Hoy es ese día!'
-            else if (diff > 0) box.textContent = `📅 Faltan ${diff} día${diff > 1 ? 's' : ''}`
-            else box.textContent = `⏮️ Hace ${Math.abs(diff)} día${Math.abs(diff) > 1 ? 's' : ''}`
+            if (diff === 0) box.textContent = '¡Hoy es ese día!'
+            else if (diff > 0) box.textContent = `Faltan ${diff} día${diff > 1 ? 's' : ''}`
+            else box.textContent = `Hace ${Math.abs(diff)} día${Math.abs(diff) > 1 ? 's' : ''}`
         }
 
-        // ─── FORMULARIOS / CRUD PRÉSTAMOS ────────────────────────────
+        //  FORMULARIOS / CRUD PRÉSTAMOS 
         let listaPrestamos = []
         let indiceEdicion = null
 
@@ -942,7 +935,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
             const devuelto = checkboxDevuelto.checked
 
             if (nombre === '' || material === '' || !turnoMarcado) {
-                showAlert('⚠️ Debes completar todos los campos', 'warn')
+                showAlert('Debes completar todos los campos', 'warn')
                 return
             }
 
@@ -951,14 +944,14 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
 
             if (indiceEdicion === null) {
                 listaPrestamos.push(nuevoPrestamo)
-                showAlert('✅ Préstamo añadido', 'ok')
+                showAlert('Préstamo añadido', 'ok')
             } else {
                 listaPrestamos[indiceEdicion] = nuevoPrestamo
                 indiceEdicion = null
                 botonGuardar.textContent = '＋ Añadir préstamo'
                 botonGuardar.style.borderColor = ''
                 botonGuardar.style.color = ''
-                showAlert('✅ Préstamo actualizado', 'ok')
+                showAlert('Préstamo actualizado', 'ok')
             }
 
             limpiarFormulario()
@@ -979,7 +972,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
           <td><span class="chip">${p.turno}</span></td>
           <td><span class="chip ${p.devuelto ? 'blue' : 'red'}">${p.devuelto ? 'Sí' : 'No'}</span></td>
           <td style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="btn-warn btn-sm" onclick="editarPrestamo(${i})">✏ Editar</button>
+            <button class="btn-warn btn-sm" onclick="editarPrestamo(${i})">Editar</button>
             <button class="btn-danger btn-sm" onclick="borrarPrestamo(${i})">✕ Borrar</button>
           </td>
         </tr>`
@@ -990,7 +983,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
         function borrarPrestamo(indice) {
             listaPrestamos.splice(indice, 1)
             mostrarPrestamos()
-            showAlert('🗑️ Préstamo eliminado', 'warn')
+            showAlert('Préstamo eliminado', 'warn')
         }
 
         function editarPrestamo(indice) {
@@ -1003,7 +996,7 @@ lista.innerHTML = html            <span class="cm">// ✅ una sola vez</span></p
             if (radio) radio.checked = true
 
             indiceEdicion = indice
-            botonGuardar.textContent = '💾 Guardar cambios'
+            botonGuardar.textContent = 'Guardar cambios'
             botonGuardar.style.borderColor = '#ffaa44'
             botonGuardar.style.color = '#ffaa44'
         }
